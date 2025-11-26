@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ApLoader } from "@/components/loader";
 
 export const blogData = {
   "race-condition": {
@@ -188,6 +190,23 @@ const BlogPage = () => {
   const blogKey = searchParams.get("blog") ?? "";
 
   const blog = blogData[blogKey as keyof typeof blogData];
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading)
+    return (
+      <div className="h-screen w-screen flex items-center justify-center">
+        <ApLoader />
+      </div>
+    );
 
   return (
     <div className="max-w-7xl mx-auto lg:gap-12 lg:py-12 px-6 flex flex-col-reverse lg:flex-row">

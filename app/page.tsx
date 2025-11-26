@@ -3,9 +3,14 @@ import { blogData } from "@/modules/blog/page";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ApLoader } from "@/components/loader";
+import { div } from "framer-motion/client";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("experience");
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const sections = document.querySelectorAll("main section");
@@ -23,6 +28,10 @@ export default function Home() {
 
     sections.forEach((section) => observer.observe(section));
 
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
@@ -34,9 +43,21 @@ export default function Home() {
     { id: "blog", title: "Blog" },
   ];
 
+  if (loading)
+    return (
+      <div className="h-screen w-screen flex items-center justify-center">
+        <ApLoader />
+      </div>
+    );
   return (
     <div className="flex flex-col lg:gap-28 lg:flex-row max-w-7xl mx-auto px-6 pb-12 lg:px-24 scroll-smooth">
-      <header className="lg:sticky lg:top-0 lg:flex lg:flex-col lg:h-screen">
+      <motion.header
+        className="lg:sticky lg:top-0 lg:flex lg:flex-col lg:h-screen"
+        initial={{ x: -50, opacity: 0 }} // start slightly to the right and invisible
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
         <div className="lg:mt-20">
           <>
             <h1 className="text-2xl lg:text-4xl font-bold text-white pt-12">
@@ -92,8 +113,8 @@ export default function Home() {
 
         <div className="mb-6">
           <a
-            href="/Joshua_Alexander_Resume.pdf"
-            download="Joshua_Alexander_CV.pdf"
+            href="/Emmanuel_Fawehinmi_Resume.pdf"
+            download="Emmanuel_Fawehinmi_Resume.pdf"
             className="inline-flex items-center gap-2 px-4 py-2 border border-white/40 text-white/80 font-medium rounded-lg transition-colors text-xs hover:text-white hover:border-primary"
           >
             <svg
@@ -191,12 +212,18 @@ export default function Home() {
             ))}
           </ul>
         </nav>
-      </header>
+      </motion.header>
 
       <main className="flex-1 lg:sticky lg:top-0 ">
         <div className="pointer-events-none sticky top-0 z-20 -ml-6 -mr-6 h-24 bg-linear-to-b from-zinc-950 to-transparent lg:-ml-12 lg:-mr-24"></div>
-        <section id="about" className="pt-8">
-          <p className="text-zinc-400 max-w-xl text-justify">
+        <motion.section
+          initial={{ scale: 0.95, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          id="about"
+          className="pt-8"
+        >
+          <motion.p className="text-zinc-400 max-w-xl text-justify">
             I am a highly motivated software engineer with 4+ years of
             experience building modern, user-focused web and mobile
             applications. I specialize in creating efficient, scalable solutions
@@ -204,14 +231,24 @@ export default function Home() {
             Passionate about clean code, great user experience, and continuous
             learning, I bring strong problem-solving skills and a commitment to
             delivering high-quality results on every project.
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
 
         <section id="experience" className="pt-12">
-          <h3 className="text-sm font-bold text-zinc-200 uppercase tracking-widest mb-2">
+          <motion.h3
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-sm font-bold text-zinc-200 uppercase tracking-widest mb-2"
+          >
             Experience
-          </h3>
-          <div className="group grid md:grid-cols-[120px_1fr] gap-4">
+          </motion.h3>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="group grid md:grid-cols-[120px_1fr] gap-4"
+          >
             <div className="text-sm text-white/60 font-mono pt-1 md:sticky md:top-24 md:self-start">
               October 2025 – November 2025
             </div>
@@ -253,12 +290,27 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          </div>
-          <div className="group grid md:grid-cols-[120px_1fr] gap-4 mt-12">
-            <div className="text-sm text-white/60 font-mono pt-1 md:sticky md:top-24 md:self-start">
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="group grid md:grid-cols-[120px_1fr] gap-4 mt-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="text-sm text-white/60 font-mono pt-1 md:sticky md:top-24 md:self-start"
+            >
               June 2025 – November 2025
-            </div>
-            <div className="flex-1 group">
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex-1 group"
+            >
               <h4 className="text-zinc-100 font-medium text-lg mb-1 group-hover:text-primary transition-colors">
                 Product Manager / Designer · Union Bank of Nigeria
               </h4>
@@ -286,9 +338,14 @@ export default function Home() {
                   Figma
                 </span>
               </div>
-            </div>
-          </div>
-          <div className="group grid md:grid-cols-[120px_1fr] gap-4 mt-12">
+            </motion.div>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="group grid md:grid-cols-[120px_1fr] gap-4 mt-12"
+          >
             <div className="text-sm text-white/60 font-mono pt-1 md:sticky md:top-24 md:self-start">
               May 2022 – June 2025
             </div>
@@ -345,10 +402,16 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
-        <section id="blog" className="pt-20">
+        <motion.section
+          initial={{ scale: 0.95, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          id="blog"
+          className="pt-20"
+        >
           <ul className="group/list mb-2">
             {Object.keys(blogData).map((key) => (
               <li className="mb-12" key={key}>
@@ -399,7 +462,7 @@ export default function Home() {
               </li>
             ))}
           </ul>
-        </section>
+        </motion.section>
       </main>
     </div>
   );
