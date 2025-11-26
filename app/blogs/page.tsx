@@ -13,23 +13,171 @@ export const blogData = {
     image: "/race-condition.png",
     link: "/blogs?blog=race-condition",
     level: "Advanced",
+    readTime: "5 min",
     content: (
       <>
-        <p className="text-white/70 mt-4">
-          Race conditions happen when multiple operations try to access or
-          modify shared resources at the same time i.e multiple threads or
-          processes are trying to read or write to the same data at the same
-          time
-        </p>
-        <pre className="bg-zinc-900 text-primary p-4 rounded my-4 overflow-auto">
-          <code >{`let balance = 100;
+        <div className="text-white/80">
+          <p className="mt-6">
+            In software development, a race condition happens when multiple
+            operations try to access or modify shared resources at the same
+            time.
+          </p>
+          <p className="text-white mt-6 text-xl font-bold">
+            Why Race Conditions Happen?
+          </p>
+          <p className="mt-2">Race conditions happen when:</p>
 
-function withdraw(amount) {
-  if (balance >= amount) {
-    balance -= amount;
-  }
-}`}</code>
+          <p className="mt-2">
+            1. Two or more operations read and write shared data concurrently.
+          </p>
+          <p className="mt-2">
+            2. There is no synchronization mechanism to control access.
+          </p>
+          <p className="mt-2">
+            3. The final result depends on the timing of operations.
+          </p>
+          <p className="mt-2">
+            Even in simple code, this can produce incorrect results.
+          </p>
+
+          <p className="text-white mt-6 text-xl font-bold">
+            Example: Banking Withdrawal in JavaScript
+          </p>
+          <p className="mt-2">Imagine a bank account system:</p>
+        </div>
+        <pre className="bg-zinc-900 p-4 rounded my-4 overflow-auto">
+          <code>
+            <span className="text-blue-400">let</span>{" "}
+            <span className="text-green-400">balance</span> ={" "}
+            <span className="text-yellow-300">100</span>; <br />
+            <br />
+            <span className="text-blue-400">function</span>{" "}
+            <span className="text-green-400">withdraw</span>(
+            <span className="text-blue-400">user</span>,{" "}
+            <span className="text-blue-400">amount</span>) &#123; <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="text-blue-400">setTimeout</span>(() =&gt; &#123;{" "}
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="text-green-400">balance</span> -={" "}
+            <span className="text-yellow-300">amount</span>; <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="text-red-400">console.log</span>(
+            <span className="text-red-400">user</span> +{" "}
+            <span className="text-red-400">
+              " completed withdrawal. Remaining balance: "
+            </span>{" "}
+            + <span className="text-green-400">balance</span>); <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="text-gray-400">
+              // simulate network/database delay
+            </span>
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&#125;, Math.random() *{" "}
+            <span className="text-yellow-300">1000</span>); <br />
+            &#125;; <br /> <br />
+            <span className="text-blue-400">withdraw</span>(
+            <span className="text-red-400">"Alice"</span>,{" "}
+            <span className="text-yellow-300">50</span>); <br />
+            <span className="text-blue-400">withdraw</span>(
+            <span className="text-red-400">"Bob"</span>,{" "}
+            <span className="text-yellow-300">50</span>); <br />
+            <span className="text-blue-400">withdraw</span>(
+            <span className="text-red-400">"Charlie"</span>,{" "}
+            <span className="text-yellow-300">50</span>);
+          </code>
         </pre>
+        <p className="mt-2 text-white/80">
+          Problem: Both withdrawals check the balance before either updates it.
+          This allows the account to go negative, a classic race condition.
+        </p>
+        <p className="text-white mt-6 text-xl font-bold">
+          Solving Race Conditions in MongoDB
+        </p>
+        <p className="mt-2 text-white/80">
+          When using a database like MongoDB, race conditions can be avoided
+          using atomic updates.
+        </p>
+        <pre className="bg-zinc-900 p-4 rounded my-4 overflow-auto">
+          <code>
+            <span className="text-blue-400">const</span>{" "}
+            <span className="text-green-400">withdraw</span> ={" "}
+            <span className="text-blue-400">async</span> (
+            <span className="text-blue-400">userId</span>,{" "}
+            <span className="text-blue-400">amount</span>) =&gt; &#123; <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="text-blue-400">const</span>{" "}
+            <span className="text-green-400">result</span> ={" "}
+            <span className="text-blue-400">await</span>{" "}
+            <span className="text-green-400">userAccount</span>
+            .findOneAndUpdate(
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123;{" "}
+            <span className="text-gray-400">// check sufficient balance</span>
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_id:{" "}
+            <span className="text-blue-400">userId</span>, balance: &#123; $gte:{" "}
+            <span className="text-blue-400">amount</span> &#125; <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;, <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123; $inc: &#123; balance: -
+            <span className="text-blue-400">amount</span> &#125; &#125;,{" "}
+            <span className="text-gray-400">// subtract amount atomically</span>
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;,{" "}
+            <span className="text-blue-400">
+              &#123; returnDocument: "after" &#125;
+            </span>
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;);
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">if</span> (
+            <span className="text-green-400">result.value</span>) &#123;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="text-red-400">console.log</span>(
+            <span className="text-yellow-300">
+              "Withdrawal successful, new balance:"
+            </span>
+            ,<span className="text-green-400">result.value.balance</span>);
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&#125;{" "}
+            <span className="text-blue-400">else</span> &#123;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="text-red-400">console.log</span>(
+            <span className="text-yellow-300">
+              "Insufficient funds or race condition prevented!"
+            </span>
+            );
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&#125;
+            <br />
+            &#125;;
+          </code>
+        </pre>
+        <p className="text-white mt-6 text-xl font-bold">
+          Key Points About Atomic Updates in MongoDB
+        </p>
+        <p className="mt-2">
+          1. <code className="text-primary">$inc</code> ensures atomic
+          modification — the balance is updated safely.
+        </p>
+        <p className="mt-2">
+          2. The query ensures the withdrawal only happens if enough balance
+          exists.
+        </p>
+        <p className="mt-2">
+          3. Multiple simultaneous requests cannot overdraw the account.
+        </p>
+        <p className="text-white mt-6 text-xl font-bold">Conclusion</p>{" "}
+        <p className="mt-2 text-white/80">
+          Race conditions can silently break your application if not handled
+          properly. By understanding when and where shared data is accessed,
+          using atomic operations, transactions, and proper synchronization, you
+          can ensure your systems behave reliably even under concurrent
+          operations.
+        </p>
       </>
     ),
   },
@@ -42,10 +190,32 @@ const ClientComponent = () => {
   const blog = blogData[blogKey as keyof typeof blogData];
 
   return (
-    <div className="max-w-7xl mx-auto lg:gap-28 lg:py-12 px-6 flex flex-col-reverse lg:flex-row">
+    <div className="max-w-7xl mx-auto lg:gap-12 lg:py-12 px-6 flex flex-col-reverse lg:flex-row">
       <aside className="lg:sticky lg:top-0 lg:flex lg:flex-col lg:h-screen w-full lg:w-2/6 pb-12 lg:pb-0">
         <div className="pointer-events-none sticky top-0 z-20 -ml-6 -mr-6 h-24 bg-linear-to-b from-zinc-950 to-transparent lg:-ml-12 lg:-mr-24"></div>
 
+        <Link
+          className="hidden lg:inline-flex items-center gap-2 text-zinc-400 hover:text-primary transition-colors mb-8 group"
+          href="/"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-arrow-left w-4 h-4 transition-transform group-hover:-translate-x-1"
+            aria-hidden="true"
+          >
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          Back to Home
+        </Link>
         <h2 className="text-2xl lg:text-4xl font-bold text-white mb-4">
           All Blogs
         </h2>
@@ -103,9 +273,30 @@ const ClientComponent = () => {
       </aside>
 
       {/* Blog Content */}
-      <main className="flex-1 lg:sticky lg:top-0">
+      <main className="flex-1  lg:sticky lg:top-0">
         <div className="pointer-events-none sticky top-0 z-20 -ml-6 -mr-6 h-24 bg-linear-to-b from-zinc-950 to-transparent lg:-ml-12 lg:-mr-24"></div>
-
+        <Link
+          className="inline-flex lg:hidden items-center gap-2 text-zinc-400 hover:text-primary transition-colors mb-8 group"
+          href="/"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-arrow-left w-4 h-4 transition-transform group-hover:-translate-x-1"
+            aria-hidden="true"
+          >
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          Back to Home
+        </Link>
         {!blog ? (
           <p className="p-8">Select a blog from the list.</p>
         ) : (
@@ -150,7 +341,7 @@ const ClientComponent = () => {
                   <path d="M12 6v6l4 2"></path>
                   <circle cx="12" cy="12" r="10"></circle>
                 </svg>
-                <span>2 min</span>
+                <span>{blog?.readTime}</span>
               </div>
             </div>
             <Image
