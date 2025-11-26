@@ -28,16 +28,15 @@ export default function Home() {
   const sectionsData = [
     { id: "about", title: "About" },
     { id: "experience", title: "Experience" },
-    { id: "projects", title: "Projects" },
+    { id: "blog", title: "Blog" },
   ];
 
   return (
     <div className="flex flex-col lg:gap-28 lg:flex-row max-w-7xl mx-auto px-6 pb-12 lg:px-24 scroll-smooth">
-      {/* Side Nav */}
       <header className="lg:sticky lg:top-0 lg:flex lg:flex-col lg:h-screen">
         <div className="lg:mt-20">
           <>
-            <h1 className="text-4xl font-bold text-white pt-12">
+            <h1 className="text-2xl lg:text-4xl font-bold text-white pt-12">
               Emmanuel Fawehinmi
             </h1>
             <p className="my-3 text-xl text-zinc-400">Software Engineer</p>
@@ -85,29 +84,10 @@ export default function Home() {
               </svg>
               <span className="text-zinc-300 text-sm">Backend</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-zinc-900/50 border border-zinc-800 rounded-lg text-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-smartphone w-4 h-4 text-primary"
-                aria-hidden="true"
-              >
-                <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
-                <path d="M12 18h.01"></path>
-              </svg>
-              <span className="text-zinc-300 text-sm">Mobile</span>
-            </div>
           </div>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6">
           <a
             href="/Joshua_Alexander_Resume.pdf"
             download="Joshua_Alexander_CV.pdf"
@@ -235,10 +215,9 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Main scrollable content */}
       <main className="flex-1 lg:sticky lg:top-0 ">
         <div className="pointer-events-none sticky top-0 z-20 -ml-6 -mr-6 h-24 bg-linear-to-b from-zinc-950 to-transparent lg:-ml-12 lg:-mr-24"></div>
-        <section id="about" className="pt-12">
+        <section id="about" className="pt-8">
           <p className="text-zinc-400 max-w-xl text-justify">
             I am a highly motivated software engineer with 4+ years of
             experience building modern, user-focused web and mobile
@@ -342,20 +321,29 @@ export default function Home() {
               <ul className="text-white/70 leading-relaxed mb-4 space-y-3 text-sm">
                 <li>
                   <strong className="font-semibold text-white/80">
-                    Agent Wallet Redesign
+                    Admin Dashboard Platform
                   </strong>
-                  : Redesigned the agent wallet interface into a modern,
-                  intuitive experience, revamping onboarding flows, transaction
-                  pages, and withdrawal screens to improve usability, clarity,
-                  and overall user engagement.
+                  : Built REST and GraphQL APIs implementing role-based access
+                  control (RBAC) to manage branches, staff, products, stock,
+                  orders, and product categories, enabling efficient and secure
+                  administration workflows <br />
+                  Implemented and integrated created APIs on the frontend using
+                  Next.js, enabling seamless admin dashboard operations for
+                  products, orders, and user management.
                 </li>
                 <li>
                   <strong className="font-semibold text-white/80">
-                    Product Research
+                    Ecommerce Platform
                   </strong>
-                  : Researched and evaluated potential new features for Union
-                  Bank’s Omni-Channel mobile app, translating insights into
-                  structured presentations for the product team.
+                  : Implemented product listing, user cart selection and
+                  management, as well as order tracking.
+                </li>
+                <li>
+                  <strong className="font-semibold text-white/80">
+                    Trained new staffs{" "}
+                  </strong>
+                  : Trained and guided 3 new front-end staff, providing hands-on
+                  mentorship, code reviews, and best practices.
                 </li>
               </ul>
               <div className="flex flex-wrap gap-2">
@@ -382,11 +370,48 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="projects" className="min-h-screen pt-12">
-          <h2 className="text-3xl font-bold text-slate-200 mb-4">Projects</h2>
-          <p className="text-slate-400 max-w-xl">
-            Some of my recent projects include X, Y, and Z...
-          </p>
+        <section id="blog" className="min-h-screen pt-20">
+          <ul className="group/list mb-2">
+            <li className="mb-12">
+              <div className="group relative grid md:grid-cols-[120px_1fr] gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
+                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-zinc-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                {/* <img alt="Accessibility icon" loading="lazy" width="200" height="48" decoding="async" data-nimg="1" className="aspect-video object-cover z-10 col-span-2 rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:col-span-2" style={{color: "transparent"}} srcSet="/_next/image?url=%2Fimages%2Fwriting%2Fa11y.png&amp;w=256&amp;q=75 1x, /_next/image?url=%2Fimages%2Fwriting%2Fa11y.png&amp;w=640&amp;q=75 2x" src="/_next/image?url=%2Fimages%2Fwriting%2Fa11y.png&amp;w=640&amp;q=75"> */}
+                <div className="bg-red-300 h-20 w-20"></div>
+                <div className="z-10">
+                  <p className="-mt-1 text-sm font-semibold leading-6">2024</p>
+                  <h3 className="-mt-1">
+                    <a
+                      className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-primary focus-visible:text-primary  group/link text-base"
+                      href="https://klaviyo.tech/5-common-accessibility-pitfalls-and-how-to-avoid-them-e316dfc55ff0"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label="5 Common Accessibility Pitfalls and How to Avoid Them (opens in a new tab)"
+                    >
+                      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                      <span>
+                        Understanding Race Conditions in Programming{" "}
+                        <span className="inline-block">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </span>
+                      </span>
+                    </a>
+                  </h3>
+                </div>
+              </div>
+            </li>
+          </ul>
         </section>
       </main>
     </div>
