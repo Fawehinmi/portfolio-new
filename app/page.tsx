@@ -1,5 +1,8 @@
 "use client";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { blogData } from "./blogs/page";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("experience");
@@ -115,31 +118,6 @@ export default function Home() {
         </div>
 
         <div className="flex gap-6">
-          {/* <a
-            href="https://wa.me/234XXXXXXXXXX"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-500 hover:text-white transition-colors"
-            aria-label="WhatsApp (opens in a new tab)"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-5 h-5"
-              aria-hidden="true"
-            >
-              <path d="M21.05 11.05a8.5 8.5 0 1 1-15.1-5.9L3 3l1.95 2.95A8.5 8.5 0 0 1 21.05 11.05z" />
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2c-4.22-.9-7.96-3.63-10.86-6.53S2.9 8.4 2 4.18A2 2 0 0 1 4 2h3c.4 0 .78.11 1.1.32.36.23.56.64.5 1.06-.12.86-.18 1.75-.06 2.64.07.56.43 1.05.95 1.29l1.7.76c.44.2.98.13 1.36-.18l1.5-1.34c.33-.3.82-.37 1.24-.18.8.35 1.64.77 2.38 1.35.95.73 1.9 1.7 2.64 2.64.58.74 1 1.58 1.35 2.38.19.42.12.91-.18 1.24l-1.34 1.5c-.31.38-.38.92-.18 1.36l.76 1.7c.24.52.73.88 1.29.95.89.12 1.78.06 2.64-.06.42-.06.83.14 1.06.5.21.32.32.7.32 1.1z" />
-            </svg>
-          </a> */}
-
           <a
             href="https://www.linkedin.com/in/emmanuel-fawehinmi-6ab27521b/"
             target="_blank"
@@ -340,7 +318,7 @@ export default function Home() {
                 </li>
                 <li>
                   <strong className="font-semibold text-white/80">
-                    Trained new staffs{" "}
+                    Trained new staffs
                   </strong>
                   : Trained and guided 3 new front-end staff, providing hands-on
                   mentorship, code reviews, and best practices.
@@ -370,47 +348,56 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="blog" className="min-h-screen pt-20">
+        <section id="blog" className="pt-20">
           <ul className="group/list mb-2">
-            <li className="mb-12">
-              <div className="group relative grid md:grid-cols-[120px_1fr] gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
-                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-zinc-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                {/* <img alt="Accessibility icon" loading="lazy" width="200" height="48" decoding="async" data-nimg="1" className="aspect-video object-cover z-10 col-span-2 rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:col-span-2" style={{color: "transparent"}} srcSet="/_next/image?url=%2Fimages%2Fwriting%2Fa11y.png&amp;w=256&amp;q=75 1x, /_next/image?url=%2Fimages%2Fwriting%2Fa11y.png&amp;w=640&amp;q=75 2x" src="/_next/image?url=%2Fimages%2Fwriting%2Fa11y.png&amp;w=640&amp;q=75"> */}
-                <div className="bg-red-300 h-20 w-20"></div>
-                <div className="z-10">
-                  <p className="-mt-1 text-sm font-semibold leading-6">2024</p>
-                  <h3 className="-mt-1">
-                    <a
-                      className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-primary focus-visible:text-primary  group/link text-base"
-                      href="https://klaviyo.tech/5-common-accessibility-pitfalls-and-how-to-avoid-them-e316dfc55ff0"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      aria-label="5 Common Accessibility Pitfalls and How to Avoid Them (opens in a new tab)"
-                    >
-                      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                      <span>
-                        Understanding Race Conditions in Programming{" "}
-                        <span className="inline-block">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                              clip-rule="evenodd"
-                            ></path>
-                          </svg>
+            {Object.keys(blogData).map((key) => (
+              <li className="mb-12" key={key}>
+                <div className="group relative grid md:grid-cols-[120px_1fr] gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
+                  <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-zinc-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                  <Image
+                    src={blogData[key as keyof typeof blogData].image}
+                    height={100}
+                    width={100}
+                    alt="race-condition"
+                    className="z-10"
+                  />
+                  <div className="z-10 text-zinc-500">
+                    <p className="-mt-1 text-sm font-semibold leading-6">
+                      {blogData[key as keyof typeof blogData].date}
+                    </p>
+                    <h3 className="-mt-1">
+                      <Link
+                        className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-primary focus-visible:text-primary  group/link text-base"
+                        href={blogData[key as keyof typeof blogData].link}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label="5 Common Accessibility Pitfalls and How to Avoid Them (opens in a new tab)"
+                      >
+                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                        <span>
+                          {blogData[key as keyof typeof blogData].title}
+                          <span className="inline-block">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
+                              aria-hidden="true"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                                clipRule="evenodd"
+                              ></path>
+                            </svg>
+                          </span>
                         </span>
-                      </span>
-                    </a>
-                  </h3>
+                      </Link>
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            ))}
           </ul>
         </section>
       </main>

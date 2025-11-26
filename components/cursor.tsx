@@ -7,8 +7,8 @@ export default function CustomCursor() {
   const y = useMotionValue(0);
 
   // Smooth spring for small circle
-  const smoothX = useSpring(x, { stiffness: 300, damping: 20 });
-  const smoothY = useSpring(y, { stiffness: 300, damping: 30 });
+  const smoothX = useSpring(x, { stiffness: 400, damping: 20 });
+  const smoothY = useSpring(y, { stiffness: 400, damping: 20 });
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
