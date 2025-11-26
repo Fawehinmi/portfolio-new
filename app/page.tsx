@@ -1,8 +1,8 @@
 "use client";
+import { blogData } from "@/modules/blog/page";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { blogData } from "./blogs/page";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("experience");
