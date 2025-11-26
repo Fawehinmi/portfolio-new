@@ -45,7 +45,7 @@ export const blogData = {
           </p>
           <p className="mt-2">Imagine a bank account system:</p>
         </div>
-        <pre className="bg-zinc-900 p-4 rounded my-4 overflow-auto">
+        <pre className="bg-zinc-900 p-4 rounded my-4 overflow-auto text-sm md:text-base">
           <code>
             <span className="text-blue-400">let</span>{" "}
             <span className="text-green-400">balance</span> ={" "}
@@ -98,7 +98,7 @@ export const blogData = {
           When using a database like MongoDB, race conditions can be avoided
           using atomic updates.
         </p>
-        <pre className="bg-zinc-900 p-4 rounded my-4 overflow-auto">
+        <pre className="bg-zinc-900 p-4 rounded my-4 overflow-auto text-sm md:text-base">
           <code>
             <span className="text-blue-400">const</span>{" "}
             <span className="text-green-400">withdraw</span> ={" "}
