@@ -32,12 +32,12 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col lg:gap-28 lg:flex-row max-w-7xl mx-auto px-6 py-12 lg:px-24 scroll-smooth">
+    <div className="flex flex-col lg:gap-28 lg:flex-row max-w-7xl mx-auto px-6 pb-12 lg:px-24 scroll-smooth">
       {/* Side Nav */}
       <header className="lg:sticky lg:top-0 lg:flex lg:flex-col lg:h-screen">
-        <div className="lg:mt-12">
+        <div className="lg:mt-20">
           <>
-            <h1 className="text-4xl font-bold text-white">
+            <h1 className="text-4xl font-bold text-white pt-12">
               Emmanuel Fawehinmi
             </h1>
             <p className="my-3 text-xl text-zinc-400">Software Engineer</p>
@@ -52,9 +52,9 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-globe w-4 h-4 text-primary"
                 aria-hidden="true"
               >
@@ -72,9 +72,9 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-server w-4 h-4 text-primary"
                 aria-hidden="true"
               >
@@ -93,9 +93,9 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-smartphone w-4 h-4 text-primary"
                 aria-hidden="true"
               >
@@ -120,9 +120,9 @@ export default function Home() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-download w-4 h-4"
               aria-hidden="true"
             >
@@ -173,9 +173,9 @@ export default function Home() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-linkedin w-5 h-5"
               aria-hidden="true"
             >
@@ -195,9 +195,9 @@ export default function Home() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-mail w-5 h-5"
               aria-hidden="true"
             >
@@ -237,6 +237,7 @@ export default function Home() {
 
       {/* Main scrollable content */}
       <main className="flex-1 lg:sticky lg:top-0 ">
+        <div className="pointer-events-none sticky top-0 z-20 -ml-6 -mr-6 h-24 bg-linear-to-b from-zinc-950 to-transparent lg:-ml-12 lg:-mr-24"></div>
         <section id="about" className="pt-12">
           <p className="text-zinc-400 max-w-xl text-justify">
             I am a highly motivated software engineer with 4+ years of
@@ -277,19 +278,20 @@ export default function Home() {
                   <strong className="font-semibold text-white/80">
                     Budget Management &amp; Approval
                   </strong>
-                  : Designed and implemented a budget management system
-                  with multi-level approval workflows. Automated tracking of
-                  budget requests, approvals, and allocations while enforcing
-                  role-based access controls. Ensured accurate logging,
-                  validation, and notifications to streamline financial
-                  operations and maintain compliance with internal policies.
+                  : Designed and implemented a budget management system with
+                  multi-level approval workflows. Automated tracking of budget
+                  requests, approvals, and allocations while enforcing
+                  role-based access controls.
                 </li>
               </ul>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800 hover:border-primary hover:text-primary">
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1 border border-zinc-800 hover:border-primary hover:text-primary">
                   Node JS
                 </span>
-                <span className="text-xs text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800 hover:border-primary hover:text-primary">
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1 border border-zinc-800 hover:border-primary hover:text-primary">
+                  Typescript
+                </span>
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1 border border-zinc-800 hover:border-primary hover:text-primary">
                   Mongo DB
                 </span>
               </div>
@@ -306,20 +308,74 @@ export default function Home() {
               <ul className="text-white/70 leading-relaxed mb-4 space-y-3 text-sm">
                 <li>
                   <strong className="font-semibold text-white/80">
-                    Payment Processing &amp; Webhooks
+                    Agent Wallet Redesign
                   </strong>
-                  : Integrated 3rd-party payment APIs with proper
-                  authentication, idempotency, and transaction validation logic.
-                  Implemented webhook listeners to handle real-time payment
-                  updates, reconciliation, and automated workflow triggers.
+                  : Redesigned the agent wallet interface into a modern,
+                  intuitive experience, revamping onboarding flows, transaction
+                  pages, and withdrawal screens to improve usability, clarity,
+                  and overall user engagement.
+                </li>
+                <li>
+                  <strong className="font-semibold text-white/80">
+                    Product Research
+                  </strong>
+                  : Researched and evaluated potential new features for Union
+                  Bank’s Omni-Channel mobile app, translating insights into
+                  structured presentations for the product team.
                 </li>
               </ul>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800 hover:border-primary hover:text-primary">
-                  Node JS
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1  border border-zinc-800 hover:border-primary hover:text-primary">
+                  Figma
                 </span>
-                <span className="text-xs text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800 hover:border-primary hover:text-primary">
-                  Mongo DB
+              </div>
+            </div>
+          </div>
+          <div className="group grid md:grid-cols-[120px_1fr] gap-4 mt-12">
+            <div className="text-sm text-white/60 font-mono pt-1 md:sticky md:top-24 md:self-start">
+              May 2022 – June 2025
+            </div>
+            <div className="flex-1 group">
+              <h4 className="text-zinc-100 font-medium text-lg mb-1 group-hover:text-primary transition-colors">
+                Fullstack Engineer · Async Technologies
+              </h4>
+              <ul className="text-white/70 leading-relaxed mb-4 space-y-3 text-sm">
+                <li>
+                  <strong className="font-semibold text-white/80">
+                    Agent Wallet Redesign
+                  </strong>
+                  : Redesigned the agent wallet interface into a modern,
+                  intuitive experience, revamping onboarding flows, transaction
+                  pages, and withdrawal screens to improve usability, clarity,
+                  and overall user engagement.
+                </li>
+                <li>
+                  <strong className="font-semibold text-white/80">
+                    Product Research
+                  </strong>
+                  : Researched and evaluated potential new features for Union
+                  Bank’s Omni-Channel mobile app, translating insights into
+                  structured presentations for the product team.
+                </li>
+              </ul>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1  border border-zinc-800 hover:border-primary hover:text-primary">
+                  Next JS
+                </span>
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1  border border-zinc-800 hover:border-primary hover:text-primary">
+                  Tailwind CSS
+                </span>
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1  border border-zinc-800 hover:border-primary hover:text-primary">
+                  React Native
+                </span>
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1  border border-zinc-800 hover:border-primary hover:text-primary">
+                  Nest JS
+                </span>
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1  border border-zinc-800 hover:border-primary hover:text-primary">
+                  MongoDB
+                </span>
+                <span className="text-xs text-zinc-500 rounded-full bg-zinc-900 px-2 py-1  border border-zinc-800 hover:border-primary hover:text-primary">
+                  GraphQl
                 </span>
               </div>
             </div>
